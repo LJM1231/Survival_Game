@@ -4,45 +4,102 @@ using UnityEngine;
 
 public class PlayerController: MonoBehaviour
 {
+    //스피드 조정 변수
     [SerializeField]
     private float walkSpeed;
+
+    [SerializeField]
+    private float runSpeed;
+    private float applySpeed;
+
+    [SerializeField]
+    private float jumpForce;
+
+    //상태변수
+    private bool isRun = false;
+    private bool isGround = true;
+
+    //땅 착지 여부
+    private CapsuleCollider capsuleCollider;
 
     [SerializeField]
     private float lookSensitivity; //카메라 민감도
 
     [SerializeField]
     private float cameraRotationLimit; //상하 카메라 각도 제한
-
     private float currentCameraRotationX = 0; //상하 카메라 회전
 
+
+    //필요한 컴포넌트
     [SerializeField]
     private Camera theCamera;
-
     private Rigidbody myRigid;
 
     // Start is called before the first frame update
     void Start()
     {
+        capsuleCollider = GetComponent<CapsuleCollider>();
         myRigid = GetComponent<Rigidbody>(); //인스펙터 창의 rigidbody 가져오기
+        applySpeed = walkSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        TryJump();
+        TryRun();
         Move();
         CameraRotation();
         CharacterRotation();
     }
 
+    private void TryJump()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+    }
+
+    private void Jump()
+    {
+        myRigid.velocity = transform.up * jumpForce;
+    }
+
+    private void TryRun()
+    {
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            Running();
+        }
+        if(Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            RunningCancel();
+        }
+    }
+
+    private void Running()
+    {
+        isRun = true;
+        applySpeed = runSpeed;
+    }
+
+    private void RunningCancel()
+    {
+        isRun = false;
+        applySpeed = walkSpeed;
+    }
+
+
     private void Move()
     {
-        float _moveDirX = Input.GetAxisRaw("Horizontal");
-        float _moveDirZ = Input.GetAxisRaw("Vertical");
+        float _moveDirX = Input.GetAxisRaw("Horizontal");  //좌우
+        float _moveDirZ = Input.GetAxisRaw("Vertical");  //상하
 
         Vector3 _moveHorizontal = transform.right * _moveDirX;
         Vector3 _moveVertical = transform.forward * _moveDirZ;
 
-        Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * walkSpeed;
+        Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed;
 
         myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
     }
