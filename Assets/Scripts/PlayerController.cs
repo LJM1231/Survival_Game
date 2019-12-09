@@ -46,6 +46,7 @@ public class PlayerController: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IsGround();
         TryJump();
         TryRun();
         Move();
@@ -53,9 +54,14 @@ public class PlayerController: MonoBehaviour
         CharacterRotation();
     }
 
+    private void IsGround()
+    {
+        isGround = Physics.Raycast(transform.position, Vector3.down, capsuleCollider.bounds.extents.y + 0.1f);
+    }
+
     private void TryJump()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && isGround)
         {
             Jump();
         }
