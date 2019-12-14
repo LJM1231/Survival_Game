@@ -23,9 +23,53 @@ public class HandController : MonoBehaviour
 
     private void TryAttack()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1")) // 마우스 왼쪽버튼 누르면
         {
-            if(!isAttack)
+            if (!isAttack)
+            {
+                StartCoroutine(AttackCoroutine());//코루틴 실행
+            }
         }
+    }
+
+    IEnumerator AttackCoroutine()
+    {
+        isAttack = true;
+        currentHand.anim.SetTrigger("Attack"); //공격 애니메이션 실행
+
+        yield return new WaitForSeconds(currentHand.attackDelayA);
+        isSwing = true;
+
+        //공격 활성화 시점 //코루틴실행
+        StartCoroutine(HitCoroutine());
+
+        yield return new WaitForSeconds(currentHand.attackDelayB);
+        isSwing = false;
+
+        yield return new WaitForSeconds(currentHand.attackDelay - currentHand.attackDelayA - currentHand.attackDelayB);
+        isAttack = false;
+    }
+
+    IEnumerator HitCoroutine()
+    {
+        while(isSwing)
+        {
+            if (CheckObject())
+            {
+                //충돌됨
+                isSwing = false;
+                Debug.Log(hitInfo.transform.name);
+            }
+            yield return null;
+        }
+    }
+
+    private bool CheckObject()
+    {
+        if(Physics.Raycast(transform.position, transform.forward, out hitInfo, currentHand.range))
+        {
+            return true;
+        }
+        return false;
     }
 }
