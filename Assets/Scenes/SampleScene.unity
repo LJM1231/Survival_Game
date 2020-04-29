@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentGun: {fileID: 1013393717}
+  originPos: {x: 0, y: 0, z: 0}
 --- !u!82 &199154776
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5367,14 +5368,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863921575}
-  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -2.9870002, y: 0.41800004, z: 0.3959999}
-  m_LocalScale: {x: 0.10000002, y: 0.10000006, z: 0.100000046}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.00017, y: 0.02034, z: -0.00082}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 618553414}
-  m_Father: {fileID: 1013393716}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_Father: {fileID: 1451977664}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &863921577
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -10269,13 +10270,13 @@ MonoBehaviour:
   fireRate: 0.2
   reloadTime: 2
   damage: 30
-  reloadBulletCount: 30
-  currentBulletCount: 30
-  maxBulletCount: 150
-  carryBulletCount: 120
+  reloadBulletCount: 10
+  currentBulletCount: 10
+  maxBulletCount: 0
+  carryBulletCount: 23
   retroActionForce: 0.3
-  retroActionFineSightForce: 0.61
-  fineSightOriginPos: {x: 0.55, y: 0.335, z: -0.557}
+  retroActionFineSightForce: 0.7
+  fineSightOriginPos: {x: 0.55, y: 0.31, z: -0.585}
   anim: {fileID: 1013393718}
   muzzleFlash: {fileID: 863921578}
   fire_Sound: {fileID: 8300000, guid: 54b4993302c3db04eb2858385f5bc787, type: 3}
@@ -10452,6 +10453,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: d36d810b8c89ea14788c9b0a31b48a20,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b4eece1cda389a645a1d90cd58cd6005, type: 2}
     - target: {fileID: -928208058369757064, guid: d36d810b8c89ea14788c9b0a31b48a20,
         type: 3}
       propertyPath: m_Layer
@@ -10604,6 +10610,12 @@ Transform:
   m_Father: {fileID: 199154773}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!4 &1451977664 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5282245804078037656, guid: d36d810b8c89ea14788c9b0a31b48a20,
+    type: 3}
+  m_PrefabInstance: {fileID: 1290165861}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1686657184
 PrefabInstance:
   m_ObjectHideFlags: 0
