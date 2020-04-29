@@ -181,7 +181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentGun: {fileID: 1013393717}
-  originPos: {x: 0, y: 0, z: 0}
+  theCam: {fileID: 963194227}
+  hit_effect_prefab: {fileID: 3772171637122535904, guid: 0e3bfe0d3579a7e40975f26a75395fe4,
+    type: 3}
 --- !u!82 &199154776
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10361,6 +10363,26 @@ Terrain:
   m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
   m_GroupingID: 0
   m_AllowAutoConnect: 1
+--- !u!1 &1201557179 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 7bb1e085b7f4c9142b9fe9955851d144,
+    type: 3}
+  m_PrefabInstance: {fileID: 1686657184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1201557181
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201557179}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.56, z: 0}
 --- !u!1001 &1290165861
 PrefabInstance:
   m_ObjectHideFlags: 0
