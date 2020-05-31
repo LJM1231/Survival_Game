@@ -287,6 +287,7 @@
 /define:ENABLE_LEGACY_INPUT_MANAGER
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
+Assets\HUD.cs
 Assets\Scripts\Gun.cs
 Assets\Scripts\GunController.cs
 Assets\Scripts\Hand.cs
